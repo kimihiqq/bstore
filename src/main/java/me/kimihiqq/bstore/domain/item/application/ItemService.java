@@ -16,8 +16,8 @@ public class ItemService {
 		this.itemRepository = itemRepository;
 	}
 
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public void decrease(Long id, Long quantity) {
+	// @Transactional(propagation = Propagation.REQUIRES_NEW)
+	public synchronized void decrease(Long id, Long quantity) {
 		Item item = itemRepository.findById(id).orElseThrow();
 
 		item.removeStock(quantity);
