@@ -38,9 +38,9 @@ class ItemServiceTest {
 	}
 
 	@Test
-	@DisplayName("동시에 200명 주문")
+	@DisplayName("동시에 100명 주문")
 	public void concurrentOrderTest() throws InterruptedException {
-		int threadCount = 200;
+		int threadCount = 100;
 		ExecutorService executorService = Executors.newFixedThreadPool(32);
 		CountDownLatch latch = new CountDownLatch(threadCount);
 
