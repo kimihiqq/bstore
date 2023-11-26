@@ -1,6 +1,6 @@
-package me.kimihiqq.bstore.domain.item.application;
+package me.kimihiqq.bstore.domain.item.facade;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +19,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import me.kimihiqq.bstore.domain.item.domain.Item;
 import me.kimihiqq.bstore.domain.item.domain.ItemRepository;
-import me.kimihiqq.bstore.domain.item.facade.OptimisticLockItemFacade;
 
 @SpringBootTest
-class ItemServiceTest {
+
+class RedissonLockItemFacadeTest {
 
 	@Autowired
-	private OptimisticLockItemFacade optimisticLockItemFacade;
+	private RedissonLockItemFacade redissonLockItemFacade;
 
 	@Autowired
 	private ItemRepository itemRepository;
@@ -55,9 +55,7 @@ class ItemServiceTest {
 		for (int i = 0; i < threadCount; i++) {
 			futures.add(executorService.submit(() -> {
 				try {
-					optimisticLockItemFacade.removeStock(1L, 1L);
-				} catch (InterruptedException e) {
-					Thread.currentThread().interrupt();
+					redissonLockItemFacade.removeStock(1L, 1L);
 				} finally {
 					latch.countDown();
 				}
