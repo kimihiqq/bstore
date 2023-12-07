@@ -19,7 +19,7 @@ public class RedissonLockItemFacade {
 
 	private final RedissonClient redissonClient;
 
-	private final ItemService stockService;
+	private final ItemService itemService;
 
 	public void removeStock(Long key, Long quantity) {
 		RLock lock = redissonClient.getLock(key.toString());
@@ -33,7 +33,7 @@ public class RedissonLockItemFacade {
 				throw new BusinessException(ErrorCode.LOCK_ACQUISITION_FAILED);
 			}
 
-			stockService.removeStock(key, quantity);
+			itemService.removeStock(key, quantity);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 			throw new BusinessException(ErrorCode.THREAD_INTERRUPTED);

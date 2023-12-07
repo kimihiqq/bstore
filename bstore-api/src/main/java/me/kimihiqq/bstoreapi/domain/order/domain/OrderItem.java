@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.kimihiqq.bstoreapi.domain.item.domain.Item;
@@ -35,5 +36,13 @@ public class OrderItem extends BaseEntity {
 
 	private int quantity;
 	private Long orderPrice;
+
+	@Builder
+	public OrderItem(Order order, Item item, int quantity, Long orderPrice) {
+		this.order = order;
+		this.item = item;
+		this.quantity = quantity;
+		this.orderPrice = orderPrice;
+	}
 
 }
