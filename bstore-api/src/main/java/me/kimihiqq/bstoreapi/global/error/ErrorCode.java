@@ -12,6 +12,8 @@ public enum ErrorCode {
 	UNABLE_TO_HANDLE_ERROR("S002", "처리할 수 없는 데이터입니다."),
 	THREAD_INTERRUPTED("S003", "스레드가 중단되었습니다."),
 
+	//멤버
+	MEMBER_NOT_FOUND("M001", "해당 멤버를 찾을 수 없습니다."),
 
 	//공용
 	INVALID_INPUT_VALUE("C001", "잘못된 값을 입력하셨습니다."),
@@ -23,6 +25,10 @@ public enum ErrorCode {
 
 	//상품
 	INVALID_ITEM_QUANTITY("I001", "상품 재고가 부족합니다"),
+	ITEM_NOT_FOUND("I002", "해당 상품을 찾을 수 없습니다."),
+
+	//쿠폰
+	INVALID_COUPON("C001", "유효하지 않은 쿠폰입니다."),
 	;
 
 	private final String code;
