@@ -1,0 +1,4 @@
+rootProject.name = 'bstore'
+include 'bstore-api'
+include 'bstore-consumer'
+include 'bstore-common'
